@@ -1,5 +1,6 @@
 #include <comp6771/word_ladder.hpp>
 
+#include <unordered_map>
 #include <algorithm>
 #include <iostream>
 #include <iterator>
@@ -32,7 +33,7 @@ auto get_words_by_len(std::unordered_set<std::string> const& lexicon, int const&
 	std::copy_if(lexicon.begin(),
 	             lexicon.end(),
 	             std::inserter(words, words.begin()),
-	             [len](auto const x) { return x.size() == len; });
+	             [len](auto const x) { return static_cast<int>(x.size()) == len; });
 	return words;
 }
 
@@ -97,9 +98,9 @@ namespace word_ladder {
 	                            std::unordered_set<std::string> const& lexicon)
 	   -> std::vector<std::vector<std::string>> {
 		auto const len = from.size();
-		auto const words = get_words_by_len(lexicon, len);
+		auto const words = get_words_by_len(lexicon, static_cast<int>(len));
 		auto const graph = gen_grf_from_words(from, words);
-		auto  paths = get_paths_from_grf(from, to, graph);
+		auto paths = get_paths_from_grf(from, to, graph);
 		/*
 		for (auto i = words.begin(); i != words.end(); i++) {
 		   std::cout << *i << std::endl;

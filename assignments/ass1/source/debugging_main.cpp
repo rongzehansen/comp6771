@@ -18,5 +18,4 @@ auto main() -> int {
 		std::cout << "\n";
 	}
 	std::cout << "No. of Ladders: " << ladders.size() << '\n';
-
 }
