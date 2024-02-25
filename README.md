@@ -1,2 +1,2 @@
-# ugrd-comp6771
-COMP6771 - Advanced C++ Programming
+# COMP6771 22T2
+Advanced C++ Programming
